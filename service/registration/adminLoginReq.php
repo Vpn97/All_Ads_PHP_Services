@@ -28,7 +28,7 @@
             echo json_encode($response);
         }else{
             extract($_GET);
-            $password=md5($password);
+           // $password=md5($password);
             // MySQL Start
             $con -> autocommit(FALSE);
             $sqlExist = "SELECT uid FROM allads.admin_mst WHERE mob_no = '$mob_no' limit 1";
@@ -68,7 +68,8 @@
     }else{
         $response = array();
         $response['status']=false;
-        $error_list[]=new Errors("LOGIN005","Invalid request",'REG'); 
+        $error_list[]=new Errors("LOGIN005","Invalid request",'REG');
+        $response['errors']=$error_list; 
         mysqli_close($con);	
         echo json_encode($response);
     }
