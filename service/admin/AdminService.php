@@ -114,7 +114,7 @@
                 
             }
 
-            return $response;
+            return $response[0];
         }
 
 
