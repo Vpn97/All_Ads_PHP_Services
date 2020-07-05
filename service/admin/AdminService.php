@@ -7,6 +7,8 @@
            $this->con=$con;
         }
 
+        
+
 
  //get total users
         public function validateAdmin($admin_id,$mob_no){

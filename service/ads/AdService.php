@@ -27,6 +27,7 @@
             $resultOrder = mysqli_query($this->con,$sqlOrder) or die(mysqli_error($this->con));
             $rowOrder=mysqli_fetch_assoc($resultOrder);
 
+            $row['user_dtl']=$this->getUserMstFromUID($row['uid']);
             $row['images'] =$images;
             $row['order_dtl'] = $rowOrder;
             $row['category_dtl']=$this->getCategoryDtlFromCatId($row['cat_id']);
@@ -37,6 +38,13 @@
         }
 
 
+
+        public function getUserMstFromUID($uid){
+            $sql="SELECT uid,mob_no,user_name,address_id,user_type_id,email FROM allads.user_mst WHERE uid=$uid";
+            $result = mysqli_query($this->con,$sql) or die(mysqli_error($this->con));
+            $row=mysqli_fetch_assoc($result);
+            return $row;
+        }
 
             //get total ads 
             public function getActiveAds(){
